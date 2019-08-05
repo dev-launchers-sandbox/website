@@ -1,54 +1,53 @@
-body{
+body {
   margin: 0px;
   background: #222;
   font-weight: 300;
   background-color: lightblue;
 }
 
-.container{
+.container {
   width: 80%;
   margin: 0 auto;
 }
 
-header{
+header {
   background: #55d6aa;
 }
 
 header::after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
 
-.logo{
-  float:left;
+.logo {
+  float: left;
   padding: 10px 0;
 }
 
-nav{
+nav {
   float: right;
 }
 
-nav ul{
+nav ul {
   margin: 0;
-  padding:0;
+  padding: 0;
   list-style: none;
 }
 
-nav li{
+nav li {
   display: inline-block;
   margin-left: 40px;
   padding-top: 23px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 
-nav ul li a{
+nav ul li a {
   color: #444;
   text-decoration: none;
   font-size: 14px;
-
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
   color: white;
 }
