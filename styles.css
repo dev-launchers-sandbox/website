@@ -1,53 +1,127 @@
-body {
+html{
+  width:100%;
+  min-height:100%;
+  overflow: auto;
+}
+
+body{
   margin: 0px;
   background: #222;
   font-weight: 300;
-  background-color: lightblue;
+  background-image: url("cool-background.png");
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  overflow: auto;
 }
 
-.container {
-  width: 80%;
+.container{
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 
-header {
-  background: #55d6aa;
+.image-container{
+  width:100%;
+  min-height:100%;
+  height: auto;
+}
+
+
+header{
+  background: red;
 }
 
 header::after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
 
-.logo {
-  float: left;
+.logo{
+  float:left;
   padding: 10px 0;
 }
 
-nav {
+nav{
   float: right;
 }
 
-nav ul {
+nav ul{
   margin: 0;
-  padding: 0;
+  padding:0;
   list-style: none;
 }
 
-nav li {
+nav li{
   display: inline-block;
   margin-left: 40px;
   padding-top: 23px;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
 }
 
-nav ul li a {
+nav ul li a{
   color: #444;
   text-decoration: none;
   font-size: 14px;
+
 }
 
-nav ul li a:hover {
+nav ul li a:hover{
   color: white;
 }
+
+footer{
+  background-color: black;
+  width: 100%;
+  height:15%;
+}
+
+footer p{
+  text-align: center;
+  color: white;
+
+}
+
+.cool-image{
+  background-image: url("library.jpg");
+  position: fixed;
+  z-index: -1;
+  background-position: center ;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  width:100%;
+  height:25%;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.9em;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+#contact-section {
+  border-radius: 5px;
+  background-color: coral;
+  padding: 20px;
+  margin-bottom:0%;
