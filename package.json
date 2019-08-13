@@ -1,7 +1,7 @@
 {
-  "name": "dev-launchers-sandbox-website",
+  "name": "website",
   "version": "1.0.0",
-  "description": "Dev Launchers Website",
+  "description": "https://trello.com/b/3HalmvQz/website",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",

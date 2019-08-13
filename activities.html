@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  </style>
+  <script type="text/javascript">
+    // Contains a list of activities, grouped into
+    //    Beginner, Intermediate, and Advanced
+    //    categories.
+    const activities = {
+      "beginner": [
+        {
+          "title": "Virtual Pet - Integer Feeding",
+          "description": "Learn to set numerical variables to feed a virtual pet.",
+          "sandboxUrl": "https://codesandbox.io/s/activityvirtual-petinteger-feeding-6cvo0?fontsize=14&module=%2FREADME.md",
+          "githubUrl": "https://github.com/pyxld-kris/activity__virtual-pet--integer-feeding"
+        }
+      ],
+      "intermediate": [],
+      "advanced": []
+    };
+
+    function renderAllActivities() {
+      console.log('rendering all')
+      // We have three different levels of activities, and want to render them in order
+      //    1) render Beginner activities
+      //    2) render Intermediate activities
+      //    3) render Advanced activities
+
+      /* Beginner activities */
+      renderActivityListInto(activities.beginner, 'activity-area__beginner');
+
+      /* Intermediate activities */
+      renderActivityListInto(activities.intermediate, 'activity-area__intermediate');
+
+      /* Advanced activities */
+      renderActivityListInto(activities.advanced, 'activity-area__advanced');
+    }
+
+    function renderActivityListInto(activityList, targetElementId) {
+      // Grab a reference to our activity area element and store it in a variable
+      let activityAreaElement = document.getElementById(targetElementId);
+      for (let i=0; i<activityList.length; i++) {
+        let activityData = activityList[i];
+        let activityElement = document.createElement('div');
+        activityElement.class = 'activity-entry';
+        activityElement.innerHTML = `
+          <div class="activity-title">
+            ${activityData.title}
+          </div>
+          <div class="activity-description">
+            ${activityData.description}
+          </div>
+          <div class="activity-sandbox-url">
+            ${activityData.sandboxUrl}
+          </div>
+          <div class="activity-github-url">
+            ${activityData.githubUrl}
+          </div>
+        `;
+        activityAreaElement.appendChild(activityElement);
+      }
+    }
+
+    window.onload = function() {
+      // Call initializing function to render all activities
+      console.log('page load')
+      renderAllActivities(); 
+    }
+  </script>
+</head>
+<body>
+  <div id="header"></div>
+    <div id="activity-area">
+      <div id="activity-area__beginner">
+        <div class="activity-area__header">
+          Beginner Activities
+        </div>
+      </div>
+      <div id="activity-area__intermediate">
+        <div class="activity-area__header">
+          Intermediate Activities
+        </div>
+      </div>
+      <div id="activity-area__advanced">
+        <div class="activity-area__header">
+          Advanced Activities
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
