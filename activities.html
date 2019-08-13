@@ -2,6 +2,70 @@
 <html>
 <head>
   <style>
+    #header {
+      font-size:3rem;
+    }
+
+    #activity-area {
+      width:95%;
+      margin-left:auto;
+      margin-right:auto;
+      background-color:lightgray;
+
+      padding:1%;
+    }
+
+    .activity-section {
+      width:97.5%;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:1%;
+      margin-bottom:1%;
+    }
+
+    .activity-area__header {
+      font-size:2rem;
+    }
+
+    #activity-area__beginner {
+      background-color:yellow;
+    }
+
+    #activity-area__intermediate {
+      background-color:orange;
+
+    }
+
+    #activity-area__advanced {
+      background-color:red;
+    }
+
+
+    .activity-entry {
+      width:95%;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:1%;
+      margin-bottom:1%;
+
+      background-color:black;
+      color:white;
+    }
+
+    .activity-title {
+      font-size:1.5rem;
+    }
+    .activity-description {
+
+    }
+    .activity-sandbox-url {
+      width:50%;
+      text-align:center;
+    }
+    .activity-github-url {
+      width:50%;
+      text-align:center;
+    }
   </style>
   <script type="text/javascript">
     // Contains a list of activities, grouped into
@@ -19,31 +83,26 @@
       "intermediate": [],
       "advanced": []
     };
-
     function renderAllActivities() {
       console.log('rendering all')
       // We have three different levels of activities, and want to render them in order
       //    1) render Beginner activities
       //    2) render Intermediate activities
       //    3) render Advanced activities
-
       /* Beginner activities */
       renderActivityListInto(activities.beginner, 'activity-area__beginner');
-
       /* Intermediate activities */
       renderActivityListInto(activities.intermediate, 'activity-area__intermediate');
-
       /* Advanced activities */
       renderActivityListInto(activities.advanced, 'activity-area__advanced');
     }
-
     function renderActivityListInto(activityList, targetElementId) {
       // Grab a reference to our activity area element and store it in a variable
       let activityAreaElement = document.getElementById(targetElementId);
       for (let i=0; i<activityList.length; i++) {
         let activityData = activityList[i];
         let activityElement = document.createElement('div');
-        activityElement.class = 'activity-entry';
+        activityElement.className = 'activity-entry';
         activityElement.innerHTML = `
           <div class="activity-title">
             ${activityData.title}
@@ -52,16 +111,18 @@
             ${activityData.description}
           </div>
           <div class="activity-sandbox-url">
-            ${activityData.sandboxUrl}
+            <a href="${activityData.sandboxUrl}">Open Sandbox</a>
           </div>
           <div class="activity-github-url">
-            ${activityData.githubUrl}
+            <a href="${activityData.githubUrl}">Open Github</a>
           </div>
         `;
         activityAreaElement.appendChild(activityElement);
       }
-    }
 
+      // Add a line break to push the container down a bit (purely visual)
+      activityAreaElement.appendChild(document.createElement('br'));
+    }
     window.onload = function() {
       // Call initializing function to render all activities
       console.log('page load')
@@ -70,22 +131,23 @@
   </script>
 </head>
 <body>
-  <div id="header"></div>
-    <div id="activity-area">
-      <div id="activity-area__beginner">
-        <div class="activity-area__header">
-          Beginner Activities
-        </div>
+  <div id="header">
+    Dev Launchers Activities
+  </div>
+  <div id="activity-area">
+    <div id="activity-area__beginner" class="activity-section">
+      <div class="activity-area__header">
+        Beginner Activities
       </div>
-      <div id="activity-area__intermediate">
-        <div class="activity-area__header">
-          Intermediate Activities
-        </div>
+    </div>
+    <div id="activity-area__intermediate" class="activity-section">
+      <div class="activity-area__header">
+        Intermediate Activities
       </div>
-      <div id="activity-area__advanced">
-        <div class="activity-area__header">
-          Advanced Activities
-        </div>
+    </div>
+    <div id="activity-area__advanced" class="activity-section">
+      <div class="activity-area__header">
+        Advanced Activities
       </div>
     </div>
   </div>
