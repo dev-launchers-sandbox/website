@@ -1,19 +1,24 @@
 html{
+  display: flex;
   width:100%;
-  min-height:100%;
+  min-height: 100%;
   overflow: auto;
 }
 
 body{
+  flex:1;
   margin: 0px;
   background: #222;
   font-weight: 300;
   background-image: url("cool-background.png");
   width: 100%;
+  height:auto;
   min-height: 100%;
-  height: auto;
   overflow: auto;
+  background-color: black;
 }
+
+
 
 .container{
   width: 100%;
@@ -21,16 +26,65 @@ body{
   margin: 0 auto;
 }
 
-.image-container{
-  width:100%;
-  min-height:100%;
-  height: auto;
-}
+
 
 
 header{
-  background: red;
+  position:relative;
+  background-color: black;
+  min-height:10%;
 }
+
+#logo-container {
+  position:absolute;
+  width:50%;
+  left:1%;
+  top:10%;
+
+  font-family: 'Press Start 2P', cursive;
+  font-weight:normal;
+  color:white;
+  background-color:transparent;
+
+  text-align:left;
+}
+
+header nav {
+  position:absolute;
+  bottom:0;
+  right:5%;
+
+  background-color:transparent;
+}
+
+header nav{
+  float: right;
+}
+
+header nav ul{
+  margin: 0;
+  padding:0;
+  list-style: none;
+}
+
+header nav li{
+  display: inline-block;
+  margin-left: 40px;
+  padding-top: 23px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+header nav ul li a{
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+
+}
+
+header nav ul li a:hover{
+  color: white;
+}
+
 
 header::after {
   content: '';
@@ -38,43 +92,41 @@ header::after {
   clear: both;
 }
 
-.logo{
-  float:left;
-  padding: 10px 0;
+.image-container{
+  width:100%;
+  /*min-height:100%;*/
+  height: auto;
+}
+.cool-image{
+  background-image: url("library.jpg");
+  position: fixed;
+  z-index: -1;
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  width:100%;
+  height:50%;
+  top:0%;
+  left:0;
 }
 
-nav{
-  float: right;
+#content-area {
+  margin-top:35%;
+  background-color:black;
+  color:white;
+  padding:2.5%;
 }
 
-nav ul{
-  margin: 0;
-  padding:0;
-  list-style: none;
-}
 
-nav li{
-  display: inline-block;
-  margin-left: 40px;
-  padding-top: 23px;
-  font-family: 'Press Start 2P', cursive;
-}
 
-nav ul li a{
-  color: #444;
-  text-decoration: none;
-  font-size: 14px;
 
-}
 
-nav ul li a:hover{
-  color: white;
-}
 
 footer{
   background-color: black;
   width: 100%;
   height:15%;
+  color:white;
 }
 
 footer p{
@@ -83,16 +135,6 @@ footer p{
 
 }
 
-.cool-image{
-  background-image: url("library.jpg");
-  position: fixed;
-  z-index: -1;
-  background-position: center ;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  width:100%;
-  height:25%;
-}
 
 input[type=text], select, textarea {
   width: 100%;
