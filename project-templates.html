@@ -6,8 +6,24 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color:black;
+    html{
+      display: flex;
+      width:100%;
+      min-height: 100%;
+      overflow: auto;
+    }
+
+    body{
+      flex:1;
+      margin: 0px;
+      background: #222;
+      font-weight: 300;
+      background-image: url("cool-background.png");
+      width: 100%;
+      height:auto;
+      min-height: 100%;
+      overflow: auto;
+      background-color: black;
     }
 
     #title {
@@ -25,7 +41,7 @@
       padding:1%;
     }
 
-    .activity-section {
+    .content-section {
       width:97.5%;
       margin-left:auto;
       margin-right:auto;
@@ -33,24 +49,9 @@
       margin-bottom:1%;
     }
 
-    .activity-area__header {
+    .content-section__header {
       font-size:2rem;
-    }
-
-    #activity-area__novice {
-      /* background-color:yellow; */
-      color:yellow;
-    }
-
-    #activity-area__intermediate {
-      /* background-color:orange; */
-      color:orange;
-
-    }
-
-    #activity-area__advanced {
-      /* background-color:red; */
-      color:red;
+      color:white;
     }
 
 
@@ -103,17 +104,27 @@
     // Contains a list of activities, grouped into
     //    Novice, Intermediate, and Advanced
     //    categories.
-    const activities = {
-      "novice": [
+    const projectTemplates = {
+      "simple": [
         {
-          "title": "Virtual Pet - Integer Feeding",
-          "description": "Learn to set numerical variables to feed a virtual pet.",
-          "sandboxUrl": "https://codesandbox.io/s/activityvirtual-petinteger-feeding-6cvo0?fontsize=14&module=%2FREADME.md",
-          "githubUrl": "https://github.com/pyxld-kris/activity__virtual-pet--integer-feeding"
-        }
-      ],
-      "intermediate": [],
-      "advanced": []
+          "title": "Virtual Pet",
+          "description": "A simple virtual pet base project. A cute animal moves back and forth within the screen space, interacts with a ball, and eats food.",
+          "sandboxUrl": "https://codesandbox.io/s/project-templatevirtual-pet-vesmk?fontsize=14&module=%2FREADME.md",
+          "githubUrl": ""
+        },
+        {
+          "title": "Pong",
+          "description": "A simple recreation of the physics involved with the classic Pong game.",
+          "sandboxUrl": "https://codesandbox.io/s/project-templatepong-57udn?fontsize=14&module=%2Findex.js",
+          "githubUrl": ""
+        },
+        {
+          "title": "Platformer",
+          "description": "A simple recreation of the physics involved with a basic platformer game.",
+          "sandboxUrl": "https://codesandbox.io/s/project-templateplatformer-icfip?fontsize=14&module=%2FREADME.md",
+          "githubUrl": ""
+        },
+      ]
     };
     function renderAllActivities() {
       console.log('rendering all')
@@ -122,11 +133,7 @@
       //    2) render Intermediate activities
       //    3) render Advanced activities
       /* Novice activities */
-      renderActivityListInto(activities.novice, 'activity-area__novice');
-      /* Intermediate activities */
-      renderActivityListInto(activities.intermediate, 'activity-area__intermediate');
-      /* Advanced activities */
-      renderActivityListInto(activities.advanced, 'activity-area__advanced');
+      renderActivityListInto(projectTemplates.simple, 'template-area__simple');
     }
     function renderActivityListInto(activityList, targetElementId) {
       // Grab a reference to our activity area element and store it in a variable
@@ -164,7 +171,6 @@
         activityAreaElement.appendChild(activityElement);
       }
 
-
       // Add a line break to push the container down a bit (purely visual)
       activityAreaElement.appendChild(document.createElement('br'));
     }
@@ -190,22 +196,12 @@
     </div>
   </header>
   <div id="title">
-    Activities
+    Project Templates
   </div>
   <div id="activity-area">
-    <div id="activity-area__novice" class="activity-section">
-      <div class="activity-area__header">
-        Novice Activities
-      </div>
-    </div>
-    <div id="activity-area__intermediate" class="activity-section">
-      <div class="activity-area__header">
-        Intermediate Activities
-      </div>
-    </div>
-    <div id="activity-area__advanced" class="activity-section">
-      <div class="activity-area__header">
-        Advanced Activities
+    <div id="template-area__simple" class="content-section">
+      <div class="content-section__header">
+        
       </div>
     </div>
   </div>
