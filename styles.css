@@ -2,7 +2,7 @@ html{
   display: flex;
   width:100%;
   min-height: 100%;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 body{
@@ -35,6 +35,8 @@ header{
   position:relative;
   background-color: black;
   min-height:6%;
+  width:100%;
+
 }
 
 #logo-container {
