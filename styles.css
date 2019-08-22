@@ -16,6 +16,8 @@ body{
   min-height: 100%;
   overflow: auto;
   background-color: black;
+
+  font-family: 'IBM Plex Mono', sans-serif;
 }
 
 
