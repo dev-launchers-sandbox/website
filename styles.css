@@ -165,6 +165,59 @@ input[type="submit"]:hover {
   margin-bottom: 0%;
 }
 
+/* shared stuff for activities, project-templates, and resources pages */
+.entry {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  margin-bottom: 3%;
+
+  padding: 0%;
+
+  background-color: black;
+  color: white;
+
+  border: 1px solid white;
+}
+
+.entry-title {
+  width: 99%;
+  padding-left: 1%;
+  padding-bottom: 1%;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  border-bottom: 1px solid white;
+}
+.entry-description {
+  padding-left: 1%;
+}
+.entry-button {
+  width: 30%;
+  text-align: center;
+
+  font-family: "Press Start 2P", cursive;
+  font-decoration: none;
+  color: white;
+  background-color: rgb(0, 150, 0);
+  margin: 2%;
+  padding: 2%;
+
+  display: inline-block;
+}
+.entry-button:hover {
+  background-color: rgb(0, 200, 0);
+  color: rgb(230, 230, 230);
+}
+.entry-sandbox-url {
+  color: white;
+}
+.entry-github-url {
+  color: white;
+}
+
 @media all and (orientation: portrait) {
   body {
     font-size: 2rem;
@@ -191,5 +244,9 @@ input[type="submit"]:hover {
 
   #content-area {
     margin-top: 40%;
+  }
+
+  .page-description {
+    font-size: 0.5em;
   }
 }
