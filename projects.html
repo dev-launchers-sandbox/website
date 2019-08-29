@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM Plex Mono&subset=latin" rel="stylesheet" type="text/css">
+    <style>
+        body {
+          background-color:black;
+        }
+    
+        #title {
+          font-size:3rem;
+    
+          color: white;
+    
+          margin-left:1%;
+        }
+    
+        .page-description {
+          background-color:rgb(200,200,200);
+          color:black;
+          width:90%;
+          margin:2%;
+          margin-left:auto;
+          margin-right:auto;
+          padding:1%;
+        }
+    
+        #activity-area {
+          width:95%;
+          margin-left:auto;
+          margin-right:auto;
+          background-color:transparent;
+    
+          padding:1%;
+        }
+    </style>
+    <script type="text/javascript">
+        const GITHUB_API_URL_DEV = 'https://api.github.com/users/dev-launchers-sandbox/repos'
+        const GITHUB_API_URL_PROD = 'https://api.github.com/users/dev-launchers/repos'
+    
+        async function getGithubData(apiUrl) {
+            let response = await fetch(apiUrl);
+            let data = await response.json()
+            var returnData = {}
+            
+            for(i = 0; i < data.length; i++){
+                returnData[data[i].name] = data[i];
+            }
+            return returnData;
+        }
+    
+        async function getAllUsers(){
+            let devData = await getGithubData(GITHUB_API_URL_DEV)
+            let prodData = await getGithubData(GITHUB_API_URL_PROD)
+            
+            return {devData, prodData}
+        }
+    
+        function getProjectKeys(devDataKeys, prodDataKeys){
+            allKeys = []
+            devDataKeys.forEach(devKey => {
+                // search look for substring and return its position of its first occurance
+                if (devKey.search("project__") == 0){
+                    allKeys.push(devKey)
+                }
+            })
+            prodDataKeys.forEach(prodKey => {
+                // search look for substring and return its position of its first occurance
+                if (prodKey.search("project__") == 0 && !(allKeys.includes(prodKey))){
+                    allKeys.push(prodKey)
+                }
+            })
+    
+            return allKeys
+        }
+    
+        function populateProjects(){
+          getAllUsers()
+          .then(allData => {
+              devData = allData.devData
+              prodData = allData.prodData
+              allPorjectKeys = getProjectKeys(Object.keys(devData), Object.keys(prodData))
+              allPorjectKeys.forEach(key => {
+                var repoFullName = (Object.keys(prodData).includes(key)) ? prodData[key].name : devData[key].name;
+    
+                // crea
+                const projectRepoElement= document.createElement('div')
+                projectRepoElement.setAttribute('class', 'entry')
+                projectRepoElement.innerHTML = `
+                <div class="entry-title">
+                    ${repoFullName.substring("project__".length, repoFullName.length)}
+                </div>
+                <div class="entry-description">
+                    ${devData[key].description}
+                </div>
+                `;
+    
+                if (key in devData){
+                    projectRepoElement.innerHTML += `
+                    <a class="entry-sandbox-url" href="${devData[key].html_url}" target="_blank">
+                    <div class="entry-button">
+                        Open Dev
+                    </div>
+                    </a>
+                    `;
+                }
+    
+                if (key in prodData){
+                    projectRepoElement.innerHTML += `
+                    <a class="entry-sandbox-url" href="${prodData[key].html_url}" target="_blank">
+                    <div class="entry-button">
+                        Open Prod
+                    </div>
+                    </a>
+                    `;
+                }
+                
+                const activityAreaElement = document.getElementById('activity-area')
+    
+                activityAreaElement.appendChild(projectRepoElement)
+              })
+            })
+        }
+    
+         
+        window.onload = function() {
+          console.log('page load')
+          populateProjects()
+        }
+      </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo-container">Dev Launchers</div>
+      <!--<div class="container">-->
+      <div class="header-pusher"></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">[Home]</a></li>
+          <li><a href="activities.html">[Activities]</a></li>
+          <li><a href="projects.html">[Projects]</a></li>
+          <li><a href="project-templates.html">[Project Templates]</a></li>
+          <li><a href="resources.html">[Resources]</a></li>
+        </ul>
+      </nav>
+      <!--</div>-->
+    </header>
+    <div id="title">
+        Projects
+    </div>
+    <div id="activity-area"></div>
+  </body>
+</html>
