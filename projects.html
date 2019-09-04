@@ -40,6 +40,8 @@
     <script type="text/javascript">
         const GITHUB_API_URL_DEV = 'https://api.github.com/users/dev-launchers-sandbox/repos'
         const GITHUB_API_URL_PROD = 'https://api.github.com/users/dev-launchers/repos'
+        const DEV_GAME_URL_PREFIX = 'http://devlaunchers.com/dev/'
+        const PROD_GAME_URL_PREFIX = 'http://devlaunchers.com/launch/'
     
         async function getGithubData(apiUrl) {
             let response = await fetch(apiUrl);
@@ -52,7 +54,7 @@
             return returnData;
         }
     
-        async function getAllUsers(){
+        async function getAllData(){
             let devData = await getGithubData(GITHUB_API_URL_DEV)
             let prodData = await getGithubData(GITHUB_API_URL_PROD)
             
@@ -78,7 +80,7 @@
         }
     
         function populateProjects(){
-          getAllUsers()
+          getAllData()
           .then(allData => {
               devData = allData.devData
               prodData = allData.prodData
@@ -86,7 +88,6 @@
               allPorjectKeys.forEach(key => {
                 var repoFullName = (Object.keys(prodData).includes(key)) ? prodData[key].name : devData[key].name;
     
-                // crea
                 const projectRepoElement= document.createElement('div')
                 projectRepoElement.setAttribute('class', 'entry')
                 projectRepoElement.innerHTML = `
@@ -98,9 +99,11 @@
                 </div>
                 `;
     
+                // for robustness, we check where the key is from. There could be cases where keys are from dev or prod
                 if (key in devData){
+                    devGameURLFull = DEV_GAME_URL_PREFIX + repoFullName;
                     projectRepoElement.innerHTML += `
-                    <a class="entry-sandbox-url" href="${devData[key].html_url}" target="_blank">
+                    <a class="entry-sandbox-url" href="${devGameURLFull}" target="_blank">
                     <div class="entry-button">
                         Open Dev
                     </div>
@@ -109,8 +112,9 @@
                 }
     
                 if (key in prodData){
+                    prodGameURLFull = PROD_GAME_URL_PREFIX + repoFullName;
                     projectRepoElement.innerHTML += `
-                    <a class="entry-sandbox-url" href="${prodData[key].html_url}" target="_blank">
+                    <a class="entry-sandbox-url" href="${prodGameURLFull}" target="_blank">
                     <div class="entry-button">
                         Open Prod
                     </div>
