@@ -34,6 +34,8 @@ header {
 }
 
 #logo-container {
+  position: relative;
+
   width: 90%;
 
   padding-left: 1%;
