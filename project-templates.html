@@ -69,9 +69,7 @@
 
   </style>
   <script type="text/javascript">
-    // Contains a list of activities, grouped into
-    //    Novice, Intermediate, and Advanced
-    //    categories.
+    // Contains a list of project templates
     const projectTemplates = {
       "simple": [
         {
@@ -96,11 +94,6 @@
     };
     function renderAllActivities() {
       console.log('rendering all')
-      // We have three different levels of activities, and want to render them in order
-      //    1) render Novice activities
-      //    2) render Intermediate activities
-      //    3) render Advanced activities
-      /* Novice activities */
       renderActivityListInto(projectTemplates.simple, 'template-area__simple');
     }
     function renderActivityListInto(activityList, targetElementId) {
