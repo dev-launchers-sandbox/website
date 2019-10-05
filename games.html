@@ -121,6 +121,15 @@
                     </a>
                     `;
                 }
+
+              // Add github link
+                projectRepoElement.innerHTML += `
+                <a class="entry-github-url" href="https://github.com/dev-launchers-sandbox/${repoFullName}" target="_blank">
+                  <div class="entry-button entry-github-repo-button">
+                      Github Repo
+                  </div>
+                </a>
+                `;
                 
                 const activityAreaElement = document.getElementById('activity-area')
     
